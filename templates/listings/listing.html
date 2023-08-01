@@ -1,0 +1,36 @@
+{%extends 'base_page.html'%}
+{%block content%}
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{%url 'index'%}">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="{%url 'listings'%}">Listings</a>
+        </li>
+        <li class="breadcrumb-item active">{{listing.description}}</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+<section id="listing" class="py-4">
+  {% include 'partials/_alerts.html'%}
+  <div class="container">
+    <a href="{%url 'listings'%}" class="btn btn-light mb-4">Back To Listings</a>
+    <div class="row">
+      <div class="col-md-9">
+        <!-- Home Main Image -->
+        <div>
+          {{listing.homeopathy_name}}
+        </div>
+        <hr>
+        <div>
+          Description: {{listing.description}}
+        </div>
+        </div>
+      </div>
+    </div>
+   </section>
+{%endblock%}

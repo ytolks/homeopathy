@@ -1,0 +1,8 @@
+/static
+app_env
+/media
+*.log
+.pot
+*.pyc
+__pycache__/
+settings.py

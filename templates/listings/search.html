@@ -1,0 +1,120 @@
+{%extends 'base_page.html'%}
+{%block content%}
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{%url 'index'%}">
+            <i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="{%url 'listings'%}">Browse Listings</a>
+        </li>
+        <li class="breadcrumb-item active"> Search Results</li>
+      </ol>
+    </nav>
+  </div>
+</section> 
+
+<section id="listings" class="py-4">
+  <div class="container">
+    <div class="row">
+      {%if listings%} 
+      {%for listing in listings%}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <img class="card-img-top" src="{{listing.photo_main.url}}" alt="" />
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge badge-secondary text-white"
+                  >{{listing.homeopathy_name}}</span
+                >
+              </h2>
+            </div>
+            <div class="card-body">
+              <div class="listing-heading text-center">
+                <h4 class="text-primary">{{listing.homeopathy_name}}</h4>
+              </div>
+              <hr />
+
+              <div class="row py-2 text-secondary">
+                {%if listing.potency_30 %}
+                <div class="col-6">
+                  {%include 'svg/base_svg.html'%}
+                  <span>Potency 30</span>
+                </div>
+                {%endif%} 
+                
+                {%if listing.potency_200 %}
+                <div class="col-6">
+                  {%include 'svg/base_svg.html'%}
+                  <span>Potency 200</span>
+                </div>
+                {%endif%} 
+                
+                {%if listing.potency_1m %}
+                <div class="col-6">
+                  {%include 'svg/base_svg.html'%}
+                  <span>Potency 1M</span>
+                </div>
+                {%endif%} 
+                
+                {%if listing.potency_ml1 %}
+                <div class="col-6">
+                  {%include 'svg/base_svg.html'%}
+                  <span>Potency ML1</span>
+                </div>
+                {%endif%}
+              </div>
+
+              <hr />
+
+              <div class="row text-secondary pb-2">
+                <div class="col-6">
+                  <i class="fas fa-clock"></i> {{listing.list_date|timesince}}
+                </div>
+              </div>
+              <hr />
+              <a
+                href="{% url 'listing' listing.id%}"
+                class="btn btn-primary btn-block"
+                >More Info</a
+              >
+            </div>
+          </div>
+        </div>
+       {%endfor%} 
+      {%else%}
+      <div class="col-md-12">No data available</div>
+      {%endif%}
+      <!-- Listing 1 -->
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <a class="page-link" href="#">&laquo;</a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">&raquo;</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{%endblock%}
+
