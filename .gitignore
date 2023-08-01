@@ -1,6 +1,5 @@
 /static
 app_env
-/media
 *.log
 .pot
 *.pyc
